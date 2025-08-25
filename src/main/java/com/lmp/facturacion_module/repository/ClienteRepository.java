@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+    Cliente getReferenceByCuit(String cuit);
+
+    Cliente getReferenceByRazonSocial(String razonSocial);
 }

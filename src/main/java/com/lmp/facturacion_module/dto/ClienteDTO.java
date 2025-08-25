@@ -20,6 +20,7 @@ import java.util.List;
 @Builder
  public class ClienteDTO {
     private List<Factura> facturas = new ArrayList<>();
+    private Long id;
     private String cuit;
     private String razonSocial;
     private String domicilio;
@@ -32,6 +33,7 @@ import java.util.List;
     public static ClienteDTO fromCliente(Cliente cliente){
         if(cliente == null) return null;
         return ClienteDTO.builder()
+                .id(cliente.getId())
                 .cuit(cliente.getCuit())
                 .razonSocial(cliente.getRazonSocial())
                 .domicilio(cliente.getDomicilio())

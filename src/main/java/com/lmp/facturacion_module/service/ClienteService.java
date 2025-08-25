@@ -14,7 +14,7 @@ public  class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
-    public List<ClienteDTO> getClientes(){
+    public List<ClienteDTO> getAllClientes(){
         return clienteRepository.findAll()
                 .stream()
                 .map(ClienteDTO ::fromCliente)
@@ -22,5 +22,15 @@ public  class ClienteService {
      }
 
 
+    public ClienteDTO getByID(Long id) {
+        return ClienteDTO.fromCliente(clienteRepository.getReferenceById(id));
+    }
 
+    public ClienteDTO getByCUIT(String cuit) {
+        return ClienteDTO.fromCliente(clienteRepository.getReferenceByCuit(cuit));
+    }
+
+    public ClienteDTO getByRazonSocial(String razonSocial) {
+        return ClienteDTO.fromCliente(clienteRepository.getReferenceByRazonSocial(razonSocial));
+    }
 }
