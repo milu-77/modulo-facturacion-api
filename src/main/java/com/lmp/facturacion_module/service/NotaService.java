@@ -1,32 +1,32 @@
 package com.lmp.facturacion_module.service;
 
+import com.lmp.facturacion_module.dto.FacturaDTO;
+import com.lmp.facturacion_module.dto.NotaDTO;
 import com.lmp.facturacion_module.model.Nota;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class NotaService implements ComprobanteService<Nota>{
+public class NotaService implements ComprobanteService<NotaDTO>{
+
+
     @Override
-    public Nota getComprobanteById(Long id) {
+    public  NotaDTO  getComprobanteById(Long id) {
         return null;
     }
 
     @Override
-    public Nota getComprobanteByName(String nombre) {
+    public List<NotaDTO> getComprobanteByCliente(Long id) {
         return null;
     }
 
     @Override
-    public Nota getComprobanteByCuit(String cuit) {
+    public List<NotaDTO> getComprobantesByCuit(String cuit) {
         return null;
     }
 
     @Override
-    public ArrayList<Nota> getComprobantesByCuit(String cuit) {
-        return null;
-    }
-
-    @Override
-    public ArrayList<Nota> getComprobantesByNombre(String nombre) {
+    public List<NotaDTO> getComprobantesByRazonSocial(String razon) {
         return null;
     }
 }

@@ -19,8 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
  public class ClienteDTO {
-    private List<Factura> facturas = new ArrayList<>();
-    private Long id;
+     private Long id;
     private String cuit;
     private String razonSocial;
     private String domicilio;

@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FacturaDTO {
+public class FacturaDTO extends ComprobanteDTO   {
 
     private Long id;
 
@@ -25,8 +25,7 @@ public class FacturaDTO {
     private String numeroComprobante;
     private LocalDate fechaEmision;
     private BigDecimal importeTotal;
-     private Cliente cliente;
-     private TipoComprobante tipo;
+      private TipoComprobante tipo;
      private List<ItemFactura> items;
 
     public static FacturaDTO fromFactura(Factura factura){
@@ -35,9 +34,9 @@ public class FacturaDTO {
                 .id(factura.getId())
                 .puntoVenta(factura.getPuntoVenta())
                 .fechaEmision(factura.getFechaEmision())
+                .numeroComprobante(factura.getNumeroComprobante())
                 .importeTotal(factura.getImporteTotal())
-                .cliente(factura.getCliente())
-                .tipo(factura.getTipo())
+                 .tipo(factura.getTipo())
                 .items(factura.getItems())
                 .build();
     }

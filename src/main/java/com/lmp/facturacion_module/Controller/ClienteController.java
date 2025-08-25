@@ -25,6 +25,7 @@ public class ClienteController {
     public ClienteDTO getUserID(@PathVariable Long id) {
         return clienteService.getByID(id);
     }
+
     @GetMapping( "/buscar")
     public ClienteDTO getUserByCUIT(
         @RequestParam(required = false) String cuit,

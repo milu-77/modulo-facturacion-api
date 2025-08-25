@@ -26,13 +26,10 @@ public   class Factura implements Comprobante{
     private String numeroComprobante;
     private LocalDate fechaEmision;
     private BigDecimal importeTotal;
-
     @ManyToOne
     private Cliente cliente;
-
     @Enumerated(EnumType.STRING)
     private TipoComprobante tipo;
-
     @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL)
     private List<ItemFactura> items;
 

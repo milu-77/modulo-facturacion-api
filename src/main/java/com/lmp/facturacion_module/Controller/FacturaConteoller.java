@@ -5,9 +5,7 @@ import com.lmp.facturacion_module.dto.FacturaDTO;
 import com.lmp.facturacion_module.service.ClienteService;
 import com.lmp.facturacion_module.service.FacturaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +20,27 @@ public class FacturaConteoller {
     public List<FacturaDTO> getAllClientes() {
         return facturaService.getAll();
     }
+    @GetMapping("/{id}")
+    public FacturaDTO getFacturaID(@PathVariable Long id) {
+        return facturaService.getComprobanteById(id);
+    }
+    @GetMapping("/cliente/{id}")
+    public List<FacturaDTO> getFacturasByID(@PathVariable Long id) {
+        return facturaService.getComprobanteByCliente(id);
+    }
+    @GetMapping( "/cliente")
+    public List<FacturaDTO> getUserByCUIT(
+            @RequestParam(required = false) String cuit,
+            @RequestParam(required = false) String razonSocial) {
+        if (cuit != null) {
+            return facturaService.getComprobantesByCuit(cuit);
+        } else if (razonSocial != null) {
+            return facturaService.getComprobantesByRazonSocial(razonSocial);
+        } else {
+            throw new IllegalArgumentException("Debe proporcionar CUIT o razón social");
+        }
+    }
+
 
 
 
