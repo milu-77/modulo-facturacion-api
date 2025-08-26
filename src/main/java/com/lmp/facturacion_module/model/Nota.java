@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "notas")
+@Table(name = "nota")
 public class Nota implements Comprobante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

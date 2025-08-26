@@ -41,4 +41,7 @@ public class FacturaDTO extends ComprobanteDTO   {
                 .build();
     }
 
+    public static FacturaDTO filtro(Factura factura) {
+        return FacturaDTO.fromFactura(factura);
+    }
 }

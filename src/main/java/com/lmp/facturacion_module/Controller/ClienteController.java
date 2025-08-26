@@ -1,9 +1,15 @@
 package com.lmp.facturacion_module.Controller;
 
 import com.lmp.facturacion_module.dto.ClienteDTO;
+import com.lmp.facturacion_module.dto.request.CrearClienteDTO;
+import com.lmp.facturacion_module.exception.ClienteServiceException;
+import com.lmp.facturacion_module.exception.ErrorResponse;
 import com.lmp.facturacion_module.model.Cliente;
 import com.lmp.facturacion_module.service.ClienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,4 +44,24 @@ public class ClienteController {
                 throw new IllegalArgumentException("Debe proporcionar CUIT o razón social");
             }
     }
+
+    @PostMapping
+    public ResponseEntity<?> crearCliente(@Valid
+                                          @RequestBody
+                                          CrearClienteDTO cliente) {
+        try{
+            ;
+            return clienteService.addCliente(cliente);
+        }  catch (ClienteServiceException e) {
+            // Manejar la excepción específica
+            return  ResponseEntity.badRequest().body(new ErrorResponse(HttpStatus.BAD_REQUEST.value(),  e.getMessage()));
+
+        }
+    }
+
+
+
+
+
+
 }

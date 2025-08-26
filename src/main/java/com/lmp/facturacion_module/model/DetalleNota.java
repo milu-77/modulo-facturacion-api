@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Getter
 @Setter
-class DetalleNota {
+public class DetalleNota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
