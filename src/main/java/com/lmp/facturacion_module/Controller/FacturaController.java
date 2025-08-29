@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/facturas")  // Ruta base para todos los endpoints
-public class FacturaConteoller {
+public class FacturaController {
     @Autowired
     private FacturaService facturaService;
 
