@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleHttpMessageNotReadable(HttpMessageNotReadableException ex) {
         return new ErrorResponse(
                 HttpStatus.BAD_REQUEST.value(),
-                "Formato de datos inválido. Verifique que los valores numéricos sean correctos."
+                "Formato de datos inválido. Verifique que la estructura sea correcta."
         );
     }
 

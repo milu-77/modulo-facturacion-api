@@ -59,7 +59,7 @@ public class FacturaController {
                                           @RequestBody
                                           CrearFacturaDTO factura) {
         try{
-            ;
+
             return facturaService.addFactura(factura);
         }  catch (NotaServiceException e) {
             // Manejar la excepción específica

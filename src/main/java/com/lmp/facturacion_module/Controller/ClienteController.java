@@ -6,6 +6,7 @@ import com.lmp.facturacion_module.exception.ClienteServiceException;
 import com.lmp.facturacion_module.exception.ErrorResponse;
 import com.lmp.facturacion_module.model.Cliente;
 import com.lmp.facturacion_module.service.ClienteService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/clientes")  // Ruta base para todos los endpoints
+@Tag(name = "Clientes", description = "APIs para manejo de clientes")
 public class ClienteController {
     @Autowired
     private ClienteService clienteService;

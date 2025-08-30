@@ -4,6 +4,7 @@ import com.lmp.facturacion_module.dto.ClienteDTO;
 import com.lmp.facturacion_module.dto.ComprobanteDTO;
 import com.lmp.facturacion_module.dto.FacturaDTO;
 import com.lmp.facturacion_module.dto.request.CrearFacturaDTO;
+import com.lmp.facturacion_module.exception.ClienteServiceException;
 import com.lmp.facturacion_module.model.Factura;
 import com.lmp.facturacion_module.repository.FacturaRepository;
 import jakarta.validation.Valid;
@@ -22,7 +23,12 @@ public class FacturaService implements ComprobanteService<FacturaDTO> {
     @Autowired
     FacturaRepository facturaRepository;
 
-    public   ResponseEntity<?> addFactura(@Valid CrearFacturaDTO factura) {
+    public ResponseEntity<?> addFactura(@Valid CrearFacturaDTO factura) {
+        if (facturaRepository.existsByNumeroComprobante(factura.getNumeroComprobante())) {
+            throw new ClienteServiceException("Cliente ya dado de alta");
+        }
+        System.out.println("FACTURA AGREGADO ");
+        return null;
 
 
     }
