@@ -2,10 +2,12 @@ package com.lmp.facturacion_module.service;
 
 import com.lmp.facturacion_module.dto.FacturaDTO;
 import com.lmp.facturacion_module.dto.NotaDTO;
+import com.lmp.facturacion_module.dto.request.CrearNotaDTO;
 import com.lmp.facturacion_module.model.Nota;
 import com.lmp.facturacion_module.model.enums.TipoNota;
 import com.lmp.facturacion_module.repository.NotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -74,5 +76,10 @@ public class NotaService implements ComprobanteService<NotaDTO>{
                 .filter(nota -> Objects.equals(nota.getTipo(), TipoNota.CREDITO)&& Objects.equals(nota.getFactura().getCliente().getId(), id)   )
                 .map(NotaDTO::fromNota)
                 .collect(Collectors.toList());
+    }
+
+    public ResponseEntity<?> addNota(CrearNotaDTO nota) {
+
+        return null;
     }
 }

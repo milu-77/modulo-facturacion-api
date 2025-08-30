@@ -3,9 +3,12 @@ package com.lmp.facturacion_module.service;
 import com.lmp.facturacion_module.dto.ClienteDTO;
 import com.lmp.facturacion_module.dto.ComprobanteDTO;
 import com.lmp.facturacion_module.dto.FacturaDTO;
+import com.lmp.facturacion_module.dto.request.CrearFacturaDTO;
 import com.lmp.facturacion_module.model.Factura;
 import com.lmp.facturacion_module.repository.FacturaRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,8 +22,13 @@ public class FacturaService implements ComprobanteService<FacturaDTO> {
     @Autowired
     FacturaRepository facturaRepository;
 
+    public   ResponseEntity<?> addFactura(@Valid CrearFacturaDTO factura) {
 
-     public List<FacturaDTO> getAll() {
+
+    }
+
+
+    public List<FacturaDTO> getAll() {
         return facturaRepository.findAll()
                 .stream()
                 .map(FacturaDTO::fromFactura)

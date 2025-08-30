@@ -2,6 +2,10 @@ package com.lmp.facturacion_module.Controller;
 
 import com.lmp.facturacion_module.dto.ClienteDTO;
 import com.lmp.facturacion_module.dto.FacturaDTO;
+import com.lmp.facturacion_module.dto.request.CrearFacturaDTO;
+import com.lmp.facturacion_module.exception.ErrorResponse;
+import com.lmp.facturacion_module.exception.FacturaServiceException;
+import com.lmp.facturacion_module.exception.NotaServiceException;
 import com.lmp.facturacion_module.service.ClienteService;
 import com.lmp.facturacion_module.service.FacturaService;
 import jakarta.validation.Valid;
@@ -50,23 +54,19 @@ public class FacturaController {
         }
     }
 
-//    @PostMapping
-//     public ResponseEntity<?> crear(
-//            @Valid
-//            @RequestBody
-//            FacturaDTO producto )
-//    {
-//        try{
-//            Optional<Producto> productoGuardado = productoService.guardar(producto);
-//            URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-//                    .path("/{id}")
-//                    .buildAndExpand(productoGuardado.get().getId())
-//                    .toUri();
-//            return ResponseEntity.created(location).body(new AcceptResponse(HttpStatus.CREATED.value(), "Producto Agregado"));
-//        } catch (Exception e) {
-//            return  ResponseEntity.badRequest().body(new ErrorResponse(HttpStatus.BAD_REQUEST.value(),  e.getMessage()));
-//        }
-//    }
+   @PostMapping
+    public ResponseEntity<?> crearCliente(@Valid
+                                          @RequestBody
+                                          CrearFacturaDTO factura) {
+        try{
+            ;
+            return facturaService.addFactura(factura);
+        }  catch (NotaServiceException e) {
+            // Manejar la excepción específica
+            return  ResponseEntity.badRequest().body(new ErrorResponse(HttpStatus.BAD_REQUEST.value(),  e.getMessage()));
+
+        }
+    }
 
 
 }

@@ -2,9 +2,16 @@ package com.lmp.facturacion_module.Controller;
 
 import com.lmp.facturacion_module.dto.FacturaDTO;
 import com.lmp.facturacion_module.dto.NotaDTO;
+import com.lmp.facturacion_module.dto.request.CrearClienteDTO;
+import com.lmp.facturacion_module.dto.request.CrearNotaDTO;
+import com.lmp.facturacion_module.exception.ClienteServiceException;
+import com.lmp.facturacion_module.exception.ErrorResponse;
 import com.lmp.facturacion_module.service.FacturaService;
 import com.lmp.facturacion_module.service.NotaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,6 +62,19 @@ public class NotaController {
         }
     }
 
+    @PostMapping
+    public ResponseEntity<?> crearCliente(@Valid
+                                          @RequestBody
+                                          CrearNotaDTO nota) {
+        try{
+            ;
+            return notaService.addNota(nota);
+        }  catch (ClienteServiceException e) {
+            // Manejar la excepción específica
+            return  ResponseEntity.badRequest().body(new ErrorResponse(HttpStatus.BAD_REQUEST.value(),  e.getMessage()));
+
+        }
+    }
 
 
 
